@@ -1,27 +1,28 @@
 {
-	"name": "tns-template-hello-world",
+	"name": "TicTacToeMax",
 	"main": "app.js",
-	"version": "1.5.1",
-	"author": "Telerik <support@telerik.com>",
-	"description": "Nativescript hello-world project template",
+	"version": "0.0.1",
+	"author": "Mitko-Kerezov",
+	"description": "Mobile Application Client for the Tic Tac Toe Max game. Part of the project for FMI's Advanced JS course.",
 	"license": "Apache-2.0",
 	"keywords": [
-		"telerik",
 		"mobile",
 		"nativescript",
 		"{N}",
 		"tns",
-		"appbuilder",
-		"template"
+        "tic-tac-toe",
+        "tic",
+        "tac",
+        "toe"
 	],
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/NativeScript/template-hello-world.git"
+		"url": "git://github.com/Mitko-Kerezov/Tic-Tac-Toe-Max-MobileClient.git"
 	},
 	"bugs": {
-		"url": "https://github.com/NativeScript/template-hello-world/issues"
+		"url": "https://github.com/Mitko-Kerezov/Tic-Tac-Toe-Max-MobileClient/issues"
 	},
-	"homepage": "https://github.com/NativeScript/template-hello-world",
+	"homepage": "https://github.com/Mitko-Kerezov/Tic-Tac-Toe-Max-MobileClient",
 	"android": {
 		"v8Flags": "--expose_gc"
 	}

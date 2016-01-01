@@ -1,0 +1,15 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:common="components/common"
+      navigatingTo="navigatingTo" >
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <Image src="res://login_logo" cssClass="logo" stretch="none" />
+
+        <Label text="Home" margin="8 16 16 16" cssClass="header"/>
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>
