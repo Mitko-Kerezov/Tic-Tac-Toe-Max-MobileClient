@@ -4,9 +4,9 @@ import {EventData} from "data/observable";
 import {Page} from "ui/page";
 import {SignUpViewModel} from "./sign-up-view-model";
 
-var viewModel: SignUpViewModel;
+let viewModel: SignUpViewModel;
 export function navigatingTo(args: EventData) {
-    var page = <Page>args.object;
+    let page = <Page>args.object;
     viewModel = new SignUpViewModel();
     page.bindingContext = viewModel;
 }

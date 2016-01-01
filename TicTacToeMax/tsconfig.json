@@ -10,6 +10,8 @@
     "app/config/auth.ts",
     "app/constants.ts",
     "app/pages/common/view-model-base.ts",
+    "app/pages/home/home-view-model.ts",
+    "app/pages/home/home.ts",
     "app/pages/login/login-view-model.ts",
     "app/pages/login/login.ts",
     "app/pages/sign-up/sign-up-view-model.ts",

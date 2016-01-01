@@ -1,15 +1,15 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:common="components/common"
+      xmlns:c="components/list-picker"
+      xmlns:tsd="controls/sidedrawer"
       navigatingTo="navigatingTo" >
-  <GridLayout>
-    <ScrollView>
-      <StackLayout>
-        <Image src="res://login_logo" cssClass="logo" stretch="none" />
+  <GridLayout rows="auto, *, auto, auto" >
+    <StackLayout cssClass="sideDrawerHeader">
+      <Label text="{{ username }}" cssClass="sideDrawerLabel" />
+    </StackLayout>
 
-        <Label text="Home" margin="8 16 16 16" cssClass="header"/>
-      </StackLayout>
-    </ScrollView>
-
-    <ActivityIndicator busy="{{ isLoading }}" />
+    <Border row="2" cssClass="menuSeparator" />
+    <GridLayout row="3" cssClass="menuButton" tap="logoutButtonTap">
+      <Label text="{{ strings.logout }}" cssClass="menuButtonContent" />
+    </GridLayout>
   </GridLayout>
 </Page>

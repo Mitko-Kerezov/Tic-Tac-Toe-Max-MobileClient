@@ -2,7 +2,12 @@
 
 import * as application from "application";
 import {Views} from "./utilities/views";
+import {authentication} from "./config/auth";
 
-application.mainModule = Views.login;
-application.cssFile = "./app.css";
+if (authentication.isAuthenticated) {
+    application.mainModule = Views.home;
+} else {
+    application.mainModule = Views.login;
+}
+
 application.start();

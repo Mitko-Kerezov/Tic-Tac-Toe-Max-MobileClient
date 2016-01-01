@@ -1,7 +1,7 @@
 /// <reference path="../.d.ts" />
 
 export module Strings {
-    export let logout = "LOGOUT";
+    export let logout = "Log out";
     export let login = "LOGIN";
     export let signUp = "SIGN UP";
     export let loginMessage = "Login with existing account";
