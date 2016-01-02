@@ -1,0 +1,4 @@
+<Page xmlns:customControls="pages/play/play"
+      navigatingTo="navigatingTo" >
+      <customControls:GameBoard a="5"/>
+</Page>

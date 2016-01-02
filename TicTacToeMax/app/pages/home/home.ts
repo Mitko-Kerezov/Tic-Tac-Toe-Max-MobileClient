@@ -13,3 +13,11 @@ export function navigatingTo(args: EventData) {
 export function logoutButtonTap() {
     viewModel.logout();
 }
+
+export function newGameButtonTap(args : EventData): void {
+    viewModel.newGame();
+}
+
+export function joinGameButtonTap(args : EventData): void {
+    viewModel.joinGame();
+}

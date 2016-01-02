@@ -9,5 +9,6 @@ export module Constants {
         export let BaseUrl = `${Protocol}://${Address}`;
         export let LoginEndpoint = `${BaseUrl}/login`;
         export let RegisterEndpoint = `${BaseUrl}/register`;
+        export let CreateGameEndpoint = `${BaseUrl}/create`;
     }
 }

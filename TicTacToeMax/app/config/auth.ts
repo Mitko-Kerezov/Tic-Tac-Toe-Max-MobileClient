@@ -30,6 +30,10 @@ class Authentication {
         return this._username;
     }
 
+    public get authorizationHeader(): string {
+        return `Bearer ${this.token}`;
+    }
+
     public login(username: string, password: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.request({

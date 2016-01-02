@@ -1,6 +1,8 @@
 /// <reference path="../.d.ts" />
 
 export module Strings {
+    export let newGame = "New Game";
+    export let joinGame = "Join Game";
     export let logout = "Log out";
     export let login = "LOGIN";
     export let signUp = "SIGN UP";

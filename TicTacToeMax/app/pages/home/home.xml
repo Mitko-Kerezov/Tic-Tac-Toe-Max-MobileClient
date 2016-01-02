@@ -1,10 +1,11 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:c="components/list-picker"
-      xmlns:tsd="controls/sidedrawer"
       navigatingTo="navigatingTo" >
   <GridLayout rows="auto, *, auto, auto" >
-    <StackLayout cssClass="sideDrawerHeader">
-      <Label text="{{ username }}" cssClass="sideDrawerLabel" />
+    <StackLayout>
+      <Label text="{{ username }}" cssClass="sideDrawerHeader" />
+
+      <Button text="{{ strings.newGame }}" tap="newGameButtonTap" cssClass="primaryButton"/>
+      <Button text="{{ strings.joinGame }}" tap="joinGameButtonTap" cssClass="secondaryButton"/>
     </StackLayout>
 
     <Border row="2" cssClass="menuSeparator" />

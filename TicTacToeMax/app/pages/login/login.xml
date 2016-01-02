@@ -1,5 +1,4 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:common="components/common"
       navigatingTo="navigatingTo" >
   <GridLayout>
     <ScrollView>
