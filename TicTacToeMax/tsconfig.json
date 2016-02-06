@@ -1,32 +1,36 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "inlineSourceMap": true,
-    "experimentalDecorators": true
-  },
-  "files": [
-    "app/app.ts",
-    "app/config/auth.ts",
-    "app/constants.ts",
-    "app/pages/common/view-model-base.ts",
-    "app/pages/home/home-view-model.ts",
-    "app/pages/home/home.ts",
-    "app/pages/login/login-view-model.ts",
-    "app/pages/login/login.ts",
-    "app/pages/play/play-view-model.ts",
-    "app/pages/play/play.ts",
-    "app/pages/sign-up/sign-up-view-model.ts",
-    "app/pages/sign-up/sign-up.ts",
-    "app/resources/strings.ts",
-    "app/utilities/navigation.ts",
-    "app/utilities/notifications.ts",
-    "app/utilities/statusCodes.ts",
-    "app/utilities/views.ts",
-    "node_modules/tns-core-modules/tns-core-modules.d.ts"
-  ],
-  "filesGlob": [
-    "node_modules/tns-core-modules/tns-core-modules.d.ts",
-    "app/**/*.ts"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "inlineSourceMap": true,
+        "experimentalDecorators": true
+    },
+    "files": [
+        "app/app.ts",
+        "app/config/auth.ts",
+        "app/constants.ts",
+        "app/pages/common/view-model-base.ts",
+        "app/pages/home/home-view-model.ts",
+        "app/pages/home/home.ts",
+        "app/pages/login/login-view-model.ts",
+        "app/pages/login/login.ts",
+        "app/pages/play/play-view-model.ts",
+        "app/pages/play/play.ts",
+        "app/pages/sign-up/sign-up-view-model.ts",
+        "app/pages/sign-up/sign-up.ts",
+        "app/resources/strings.ts",
+        "app/utilities/navigation.ts",
+        "app/utilities/notifications.ts",
+        "app/utilities/statusCodes.ts",
+        "app/utilities/views.ts",
+        "node_modules/tns-core-modules/tns-core-modules.d.ts"
+    ],
+    "filesGlob": [
+        "node_modules/tns-core-modules/tns-core-modules.d.ts",
+        "app/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "platforms"
+    ]
 }
