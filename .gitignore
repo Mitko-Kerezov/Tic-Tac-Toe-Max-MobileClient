@@ -27,7 +27,7 @@ build/Release
 node_modules
 
 # NativeScript
-platforms/
+TicTacToeMax/platforms
 
 # TypeScript unnecessary files
 .tscache
