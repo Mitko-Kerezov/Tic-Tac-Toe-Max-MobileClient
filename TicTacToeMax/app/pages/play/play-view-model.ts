@@ -26,11 +26,12 @@ export class PlayViewModel extends ViewModelBase {
 				if (response.isError) {
 					Notifications.showError(response.message);
 				} else {
-					Notifications.showInfo(response.message);
 					if (response.message === Constants.Responses.MoveMade) {
 						that._game.board = response.board;
 						that._board = [];
 						that.notifyPropertyChange("board", that.board);
+					} else {
+						Notifications.showInfo(response.message);
 					}
 				}
 			}

@@ -2,7 +2,7 @@
 	<Repeater items="{{ joinableGames }}">
 		<Repeater.itemTemplate>
 			<GridLayout columns="*, *" rows="auto" >
-				<Label col="0" text="{{ 'Versus ' + username }}" />
+				<Label col="0" text="{{ 'Opponent: ' + username }}" />
 				<Button col="1" text="JOIN" cssClass="primaryButton" tap="joinButtonTap" />
 			</GridLayout>
 		</Repeater.itemTemplate>
