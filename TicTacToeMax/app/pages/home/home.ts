@@ -6,7 +6,7 @@ import {HomeViewModel} from "./home-view-model";
 
 let viewModel = new HomeViewModel();
 export function navigatingTo(args: EventData) {
-    let page = <Page>args.object;
+	let page = <Page>args.object;
     page.bindingContext = viewModel;
 }
 

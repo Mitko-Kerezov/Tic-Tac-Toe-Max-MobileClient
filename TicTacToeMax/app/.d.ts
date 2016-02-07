@@ -19,13 +19,39 @@ interface ICell {
 }
 
 interface IBoard {
-    [id: number] : { [id: number] : ISmallBoard };
+	[id: number] : { [id: number] : ISmallBoard }
 }
 
 interface IGame {
+	_id: string;
     board: IBoard;
     gameResult: string;
     currentPlayingBoardRow: number;
     currentPlayingBoardCol: number;
     currentPlayerSymbol: string;
+}
+
+interface IGameReference {
+	gameId?: string;
+}
+
+interface IGameCell extends IGameReference  {
+	boardRow: number;
+	boardCol: number;
+	cellRow: number;
+	cellCol: number;
+	value: string;
+}
+
+interface IWebSocketResponse {
+	usernames: string[],
+	message: string,
+	isError: boolean,
+	board: IBoard,
+	nextBoard: {row: number, col: number}
+}
+
+interface IJoinableGame {
+	id: string;
+	username: string;
 }

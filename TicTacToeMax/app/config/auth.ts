@@ -95,11 +95,13 @@ class Authentication {
     }
 
     private setupLocalSettings(authenticationTokenKey: string, username: string): void {
+		this._username = username;
         applicationSettingsModule.setString(Constants.AuthenticationTokenKey, authenticationTokenKey);
         applicationSettingsModule.setString(Constants.UsernameKey, username);
     }
 
     private clearLocalSettings(): void {
+		this._username = null;
         applicationSettingsModule.remove(Constants.AuthenticationTokenKey);
         applicationSettingsModule.remove(Constants.UsernameKey);
     }

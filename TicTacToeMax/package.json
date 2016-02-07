@@ -7,6 +7,7 @@
 	},
 	"dependencies": {
 		"app-options": "file:app_options",
+		"nativescript-websockets": "^1.1.0",
 		"tns-core-modules": "1.5.1"
 	},
 	"devDependencies": {

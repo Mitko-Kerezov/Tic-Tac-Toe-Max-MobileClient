@@ -5,4 +5,5 @@ export module Views {
     export let signUp = "pages/sign-up/sign-up";
     export let home = "pages/home/home";
     export let play = "pages/play/play";
+    export let join = "pages/join/join";
 }

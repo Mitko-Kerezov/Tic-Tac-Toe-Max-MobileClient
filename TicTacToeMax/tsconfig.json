@@ -16,6 +16,8 @@
         "app/pages/login/login.ts",
         "app/pages/play/play-view-model.ts",
         "app/pages/play/play.ts",
+		"app/pages/join/join-view-model.ts",
+        "app/pages/join/join.ts",
         "app/pages/sign-up/sign-up-view-model.ts",
         "app/pages/sign-up/sign-up.ts",
         "app/resources/strings.ts",

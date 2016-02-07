@@ -7,13 +7,13 @@ import {Notifications} from "../../utilities/notifications";
 import {Views} from "../../utilities/views";
 import {ViewModelBase} from "../common/view-model-base";
 import {PlayViewModel} from "../play/play-view-model";
+import {JoinViewModel} from "../join/join-view-model";
 import {StatusCodes} from "../../utilities/statusCodes";
 import * as http from "http";
 
 export class HomeViewModel extends ViewModelBase {
     constructor() {
         super();
-
     }
 
     public get username(): string {
@@ -56,6 +56,27 @@ export class HomeViewModel extends ViewModelBase {
     }
 
     public joinGame(): void {
-
+            http.request({
+                url: Constants.Server.JoinGameEndpoint,
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": authentication.authorizationHeader
+                },
+                timeout: 2000 /* miliseconds */
+            })
+            .then((response: http.HttpResponse) => {
+                if (StatusCodes.isOK(response.statusCode)) {
+                    let joinModel = new JoinViewModel(response.content.toJSON());
+                    Navigation.navigate({
+                        moduleName: Views.join,
+                        context: joinModel
+                    });
+                } else {
+                    Notifications.showError(response.content.toString());
+                }
+            }, (error: any) => {
+                Notifications.showError(error.message);
+            })
     }
 }
