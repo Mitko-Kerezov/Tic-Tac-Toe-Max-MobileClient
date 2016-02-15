@@ -42,7 +42,8 @@ export class JoinViewModel extends ViewModelBase {
             })
             .then((response: http.HttpResponse) => {
 				if (StatusCodes.isOK(response.statusCode)) {
-                    let playModel = new PlayViewModel(response.content.toJSON());
+					let jsonResponse = response.content.toJSON(),
+                    	playModel = new PlayViewModel(jsonResponse, "O" ,jsonResponse.users[1].username);
                     Navigation.navigate({
                         moduleName: Views.play,
                         context: playModel

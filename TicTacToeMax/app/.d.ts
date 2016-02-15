@@ -29,15 +29,14 @@ interface IGame {
     currentPlayingBoardRow: number;
     currentPlayingBoardCol: number;
     currentPlayerSymbol: string;
+	users: { [id: number] : IJoinableGame };
 }
 
 interface IGameReference {
 	gameId?: string;
 }
 
-interface IGameCell extends IGameReference  {
-	boardRow: number;
-	boardCol: number;
+interface IGameCell extends IGameReference, IBoardCoordinates  {
 	cellRow: number;
 	cellCol: number;
 	value: string;
@@ -48,7 +47,13 @@ interface IWebSocketResponse {
 	message: string,
 	isError: boolean,
 	board: IBoard,
-	nextBoard: {row: number, col: number}
+	nextBoard: IBoardCoordinates,
+	currentPlayerSymbol: string
+}
+
+interface IBoardCoordinates {
+	boardRow: number;
+	boardCol: number;
 }
 
 interface IJoinableGame {

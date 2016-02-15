@@ -16,5 +16,12 @@ export module Constants {
 
 	export module Responses {
 		export let MoveMade = "Move made";
+		export let JoinGameSuffix = " joined the game";
+		export let OpponentNameRegex = new RegExp(`(.*)${JoinGameSuffix}`);
+	}
+
+	export module GameSymbols {
+		export let X = "X";
+		export let O = "O";
 	}
 }

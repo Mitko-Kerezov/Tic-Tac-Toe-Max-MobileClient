@@ -42,7 +42,7 @@ export class HomeViewModel extends ViewModelBase {
             })
             .then((response: http.HttpResponse) => {
                 if (StatusCodes.isOK(response.statusCode)) {
-                    let playModel = new PlayViewModel(response.content.toJSON());
+                    let playModel = new PlayViewModel(response.content.toJSON(), "X");
                     Navigation.navigate({
                         moduleName: Views.play,
                         context: playModel

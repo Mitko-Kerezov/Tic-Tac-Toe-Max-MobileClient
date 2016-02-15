@@ -1,10 +1,26 @@
 <Page navigatingTo="navigatingTo" >
-	<Repeater items="{{ board }}">
-		<Repeater.itemsLayout>
-			<GridLayout columns="*, *, *, *, *, *, *, *, *" rows="*, *, *, *, *, *, *, *, *" />
-		</Repeater.itemsLayout>
-		<Repeater.itemTemplate>
-			<Button col="{{ 3*boardCol+cellCol }}" row="{{ 3*boardRow+cellRow }}" text="{{ value }}" tap="makeMove"/>
-		</Repeater.itemTemplate>
-	</Repeater>
+	<GridLayout rows="auto, *">
+		<StackLayout orientation="horizontal">
+		<Label>
+			<Label.formattedText>
+				<FormattedString fontSize="18">
+					<FormattedString.spans>
+						<Span text="{{ username + '(' + playerSymbol + ')' }}" fontAttributes="Bold" />
+						<Span text=" vs " fontAttributes="Italic" />
+						<Span text="{{ opponent + '(' + opponentSymbol + ')' }}" fontAttributes="Bold" />
+						<Span text="{{ currentPlayerSymbol }}" fontAttributes="Bold" style="margin-left: 10"/>
+					</FormattedString.spans>
+				</FormattedString>
+			</Label.formattedText>
+		</Label>
+		</StackLayout>
+		<Repeater items="{{ board }}" row="1">
+			<Repeater.itemsLayout>
+				<GridLayout columns="*, *, *, *, *, *, *, *, *" rows="*, *, *, *, *, *, *, *, *" />
+			</Repeater.itemsLayout>
+			<Repeater.itemTemplate>
+				<Button col="{{ 3*boardCol+cellCol }}" row="{{ 3*boardRow+cellRow }}" text="{{ value }}" tap="makeMove"/>
+			</Repeater.itemTemplate>
+		</Repeater>
+	</GridLayout>
 </Page>

@@ -10,15 +10,22 @@ export class PlayViewModel extends ViewModelBase {
     private _game: IGame = null;
     private _board: IGameCell[] = null;
 	private _ws: WebSocket = null;
+	private _opponentName: string = null;
+	private _currentPlayerSymbol: string = null;
+	private _playerSymbol: string = null;
+	private _opponentSymbol: string = null;
 
-    constructor(game: IGame) {
-        super();
+	constructor(game: IGame, playerSymbol, opponentName?: string) {
+		super();
 
 		let that = this;
 		this._game = game;
 		this._board = [];
+		this._playerSymbol = playerSymbol;
+		this._opponentSymbol = playerSymbol === Constants.GameSymbols.X ? Constants.GameSymbols.O : Constants.GameSymbols.X;
 		this._ws = new WebSocket(Constants.Server.WebSocketUrl);
-
+		this._opponentName = opponentName || "No opponent yet";
+		this._currentPlayerSymbol = ` ${this._game.currentPlayerSymbol}'s move`;
 		this._ws.addEventListener('message', function(evt: MessageEvent) {
 			console.log("We got a message: ", JSON.stringify(evt.data, null, 2));
 			let response: IWebSocketResponse = JSON.parse(evt.data);
@@ -29,8 +36,15 @@ export class PlayViewModel extends ViewModelBase {
 					if (response.message === Constants.Responses.MoveMade) {
 						that._game.board = response.board;
 						that._board = [];
+						that._currentPlayerSymbol = ` ${response.currentPlayerSymbol}'s move`;
 						that.notifyPropertyChange("board", that.board);
+						that.notifyPropertyChange("currentPlayerSymbol", that.currentPlayerSymbol);
 					} else {
+						if(endsWith(response.message, Constants.Responses.JoinGameSuffix)) {
+							let opponentName = response.message.match(Constants.Responses.OpponentNameRegex)[1];
+							that._opponentName = opponentName;
+							that.notifyPropertyChange("opponent", that.opponent);
+						}
 						Notifications.showInfo(response.message);
 					}
 				}
@@ -44,6 +58,26 @@ export class PlayViewModel extends ViewModelBase {
 		this._ws.addEventListener('error', function(evt: ErrorEvent) {
 			Notifications.showError(`The socket had an error: ${JSON.stringify(evt.error, null, 2)}`);
 		});
+	}
+
+	public get username(): string {
+		return authentication.username;
+	}
+
+	public get opponent(): string {
+		return this._opponentName;
+	}
+
+	public get playerSymbol(): string {
+		return this._playerSymbol;
+	}
+
+	public get opponentSymbol(): string {
+		return this._opponentSymbol;
+	}
+
+	public get currentPlayerSymbol(): string {
+		return this._currentPlayerSymbol;
 	}
 
 	public get board(): IGameCell[] {
@@ -80,4 +114,8 @@ export class PlayViewModel extends ViewModelBase {
 			token: authentication.token
 		}));
 	}
+}
+
+function endsWith(str: string, suffix: string): boolean {
+	return !!~str.indexOf(suffix, str.length - suffix.length);
 }
