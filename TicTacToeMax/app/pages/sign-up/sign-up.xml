@@ -2,8 +2,6 @@
 	<GridLayout>
 		<ScrollView>
 			<StackLayout>
-				<Image src="res://login_logo" cssClass="logo" stretch="none" />
-
 				<Label text="{{ strings.signUpMessage }}" margin="8 16 16 16" cssClass="header" />
 
 				<TextField hint="username" text="{{ username }}" autocapitalizationType="none" />

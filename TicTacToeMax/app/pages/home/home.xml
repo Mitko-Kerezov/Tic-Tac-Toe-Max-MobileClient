@@ -1,7 +1,9 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
 	<GridLayout rows="auto, *, auto, auto" >
 		<StackLayout>
-			<Label text="{{ username }}" cssClass="sideDrawerHeader" />
+			<Label text="{{ 'Hi ' + username }}" cssClass="sideDrawerHeader" />
+			<Label text="{{ 'Wins: ' + gameResults.wins }}"  />
+			<Label text="{{ 'Losses: ' + gameResults.losses }}" />
 
 			<Button text="{{ strings.newGame }}" tap="newGameButtonTap" cssClass="primaryButton"/>
 			<Button text="{{ strings.joinGame }}" tap="joinGameButtonTap" cssClass="secondaryButton"/>

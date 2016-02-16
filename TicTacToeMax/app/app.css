@@ -12,6 +12,12 @@ TextField, TextView {
     margin: 0 16 0 16;
 }
 
+Button {
+	background-color: #333;
+	border-radius: 5;
+	margin: 3;
+}
+
 ActivityIndicator {
     horizontal-align: center;
     vertical-align: center;
@@ -120,6 +126,10 @@ ActionBar {
 
 .detailsContainer {
     padding: 8 16 8 16;
+}
+
+.whiteBtn {
+    color: #fff
 }
 
 .playingCell {

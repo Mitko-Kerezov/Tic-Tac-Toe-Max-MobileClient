@@ -12,6 +12,11 @@ import {StatusCodes} from "../../utilities/statusCodes";
 import * as http from "http";
 
 export class HomeViewModel extends ViewModelBase {
+    private _gameResults: IGameResults = {
+        wins: "Loading",
+        losses: "Loading"
+    };
+    
     constructor() {
         super();
     }
@@ -78,5 +83,26 @@ export class HomeViewModel extends ViewModelBase {
             }, (error: any) => {
                 Notifications.showError(error.message);
             })
+    }
+    
+    public get gameResults(): IGameResults {
+        http.request({
+            url: Constants.Server.StatusEndpoint,
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": authentication.authorizationHeader
+            },
+            timeout: 2000 /* miliseconds */
+        })
+        .then((response: http.HttpResponse) => {
+            if (StatusCodes.isOK(response.statusCode)) {
+                let responseJson: IGameResults = response.content.toJSON();
+                this._gameResults = responseJson;
+                this.notifyPropertyChange("gameResults", this.gameResults);
+            }
+        })
+
+        return this._gameResults;
     }
 }
