@@ -1,4 +1,4 @@
-<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo" >
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" >
 	<GridLayout rows="auto, *">
 		<StackLayout orientation="horizontal">
 		<Label>

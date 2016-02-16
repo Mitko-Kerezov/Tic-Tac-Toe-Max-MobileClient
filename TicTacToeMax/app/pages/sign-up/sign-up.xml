@@ -1,23 +1,23 @@
-<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
-  <GridLayout>
-    <ScrollView>
-      <StackLayout>
-        <Image src="res://login_logo" cssClass="logo" stretch="none" />
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+	<GridLayout>
+		<ScrollView>
+			<StackLayout>
+				<Image src="res://login_logo" cssClass="logo" stretch="none" />
 
-        <Label text="{{ strings.signUpMessage }}" margin="8 16 16 16" cssClass="header" />
+				<Label text="{{ strings.signUpMessage }}" margin="8 16 16 16" cssClass="header" />
 
-        <TextField hint="username" text="{{ username }}" autocapitalizationType="none" />
-        <Border cssClass="textFieldBorder" />
-        <TextField hint="password" text="{{ password }}" secure="true" />
-        <Border cssClass="textFieldBorder" />
-        <TextField hint="confirm password" text="{{ confirmPassword }}" secure="true" />
-        <Border cssClass="textFieldBorder" />
+				<TextField hint="username" text="{{ username }}" autocapitalizationType="none" />
+				<Border cssClass="textFieldBorder" />
+				<TextField hint="password" text="{{ password }}" secure="true" />
+				<Border cssClass="textFieldBorder" />
+				<TextField hint="confirm password" text="{{ confirmPassword }}" secure="true" />
+				<Border cssClass="textFieldBorder" />
 
-        <Button text="{{ strings.signUp }}" cssClass="primaryButton" tap="signUpButtonTap"/>
-        <Button text="{{ strings.login }}" cssClass="secondaryButton" tap="loginButtonTap"/>
-      </StackLayout>
-    </ScrollView>
+				<Button text="{{ strings.signUp }}" cssClass="primaryButton" tap="signUpButtonTap"/>
+				<Button text="{{ strings.login }}" cssClass="secondaryButton" tap="loginButtonTap"/>
+			</StackLayout>
+		</ScrollView>
 
-    <ActivityIndicator busy="{{ isLoading }}" />
-  </GridLayout>
+		<ActivityIndicator busy="{{ isLoading }}" />
+	</GridLayout>
 </Page>

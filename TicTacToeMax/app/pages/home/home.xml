@@ -1,15 +1,15 @@
-<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
-  <GridLayout rows="auto, *, auto, auto" >
-    <StackLayout>
-      <Label text="{{ username }}" cssClass="sideDrawerHeader" />
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+	<GridLayout rows="auto, *, auto, auto" >
+		<StackLayout>
+			<Label text="{{ username }}" cssClass="sideDrawerHeader" />
 
-      <Button text="{{ strings.newGame }}" tap="newGameButtonTap" cssClass="primaryButton"/>
-      <Button text="{{ strings.joinGame }}" tap="joinGameButtonTap" cssClass="secondaryButton"/>
-    </StackLayout>
+			<Button text="{{ strings.newGame }}" tap="newGameButtonTap" cssClass="primaryButton"/>
+			<Button text="{{ strings.joinGame }}" tap="joinGameButtonTap" cssClass="secondaryButton"/>
+		</StackLayout>
 
-    <Border row="2" cssClass="menuSeparator" />
-    <GridLayout row="3" cssClass="menuButton" tap="logoutButtonTap">
-      <Label text="{{ strings.logout }}" cssClass="menuButtonContent" />
-    </GridLayout>
-  </GridLayout>
+		<Border row="2" cssClass="menuSeparator" />
+		<GridLayout row="3" cssClass="menuButton" tap="logoutButtonTap">
+			<Label text="{{ strings.logout }}" cssClass="menuButtonContent" />
+		</GridLayout>
+	</GridLayout>
 </Page>
