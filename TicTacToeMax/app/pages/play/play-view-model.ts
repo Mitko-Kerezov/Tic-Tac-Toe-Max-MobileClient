@@ -32,7 +32,6 @@ export class PlayViewModel extends ViewModelBase {
 		this._opponentName = opponentName || "No opponent yet";
 		this._currentPlayerSymbol = ` ${this._game.currentPlayerSymbol}'s move`;
 		this._ws.addEventListener('message', function(evt: MessageEvent) {
-			console.log("We got a message: ", JSON.stringify(evt.data, null, 2));
 			let response: IWebSocketResponse = JSON.parse(evt.data);
 			if (~response.usernames.indexOf(authentication.username)) {
 				if (response.isError) {

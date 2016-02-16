@@ -3,6 +3,9 @@
 		"id": "org.kerezov.tictactoemax",
 		"tns-android": {
 			"version": "1.5.1"
+		},
+		"tns-ios": {
+			"version": "1.5.2"
 		}
 	},
 	"dependencies": {
