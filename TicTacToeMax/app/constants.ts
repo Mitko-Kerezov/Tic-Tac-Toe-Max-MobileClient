@@ -20,8 +20,13 @@ export module Constants {
 		export let OpponentNameRegex = new RegExp(`(.*)${JoinGameSuffix}`);
 	}
 
-	export module GameSymbols {
-		export let X = "X";
-		export let O = "O";
+	export module Game {
+		export module Symbols {
+			export let X = "X";
+			export let O = "O";
+		}
+
+		export let PlayAnyWhere = 3;
 	}
+
 }

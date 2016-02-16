@@ -14,6 +14,7 @@ export class PlayViewModel extends ViewModelBase {
 	private _currentPlayerSymbol: string = null;
 	private _playerSymbol: string = null;
 	private _opponentSymbol: string = null;
+	private _playingBoard: IBoardCoordinates = null;
 
 	constructor(game: IGame, playerSymbol, opponentName?: string) {
 		super();
@@ -21,8 +22,12 @@ export class PlayViewModel extends ViewModelBase {
 		let that = this;
 		this._game = game;
 		this._board = [];
+		this._playingBoard = {
+			boardCol: Constants.Game.PlayAnyWhere,
+			boardRow: Constants.Game.PlayAnyWhere
+		};
 		this._playerSymbol = playerSymbol;
-		this._opponentSymbol = playerSymbol === Constants.GameSymbols.X ? Constants.GameSymbols.O : Constants.GameSymbols.X;
+		this._opponentSymbol = playerSymbol === Constants.Game.Symbols.X ? Constants.Game.Symbols.O : Constants.Game.Symbols.X;
 		this._ws = new WebSocket(Constants.Server.WebSocketUrl);
 		this._opponentName = opponentName || "No opponent yet";
 		this._currentPlayerSymbol = ` ${this._game.currentPlayerSymbol}'s move`;
@@ -37,8 +42,10 @@ export class PlayViewModel extends ViewModelBase {
 						that._game.board = response.board;
 						that._board = [];
 						that._currentPlayerSymbol = ` ${response.currentPlayerSymbol}'s move`;
+						that._playingBoard = response.nextBoard;
 						that.notifyPropertyChange("board", that.board);
 						that.notifyPropertyChange("currentPlayerSymbol", that.currentPlayerSymbol);
+						that.notifyPropertyChange("playingBoard", that.playingBoard);
 					} else {
 						if(endsWith(response.message, Constants.Responses.JoinGameSuffix)) {
 							let opponentName = response.message.match(Constants.Responses.OpponentNameRegex)[1];
@@ -74,6 +81,10 @@ export class PlayViewModel extends ViewModelBase {
 
 	public get opponentSymbol(): string {
 		return this._opponentSymbol;
+	}
+
+	public get playingBoard(): IBoardCoordinates {
+		return this._playingBoard;
 	}
 
 	public get currentPlayerSymbol(): string {

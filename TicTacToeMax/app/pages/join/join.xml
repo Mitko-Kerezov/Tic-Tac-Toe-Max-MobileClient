@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatingTo="navigatingTo" >
+<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
 	<Repeater items="{{ joinableGames }}">
 		<Repeater.itemTemplate>
 			<GridLayout columns="*, *" rows="auto" >

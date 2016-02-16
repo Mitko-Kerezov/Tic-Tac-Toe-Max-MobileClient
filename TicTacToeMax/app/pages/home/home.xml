@@ -1,5 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd"
-      navigatingTo="navigatingTo" >
+<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
   <GridLayout rows="auto, *, auto, auto" >
     <StackLayout>
       <Label text="{{ username }}" cssClass="sideDrawerHeader" />

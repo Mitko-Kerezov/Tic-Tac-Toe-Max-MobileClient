@@ -122,6 +122,12 @@ ActionBar {
     padding: 8 16 8 16;
 }
 
+.playingCell {
+	background-color: #259B24;
+	border-radius: 5;
+	margin: 3;
+}
+
 .notesTextView {
     margin: 8 16 8 16;
 }

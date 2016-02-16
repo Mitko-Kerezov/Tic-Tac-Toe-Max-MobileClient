@@ -1,4 +1,4 @@
-<Page navigatingTo="navigatingTo" >
+<Page xmlns="http://schema.nativescript.org/tns.xsd" navigatingTo="navigatingTo" >
 	<GridLayout rows="auto, *">
 		<StackLayout orientation="horizontal">
 		<Label>
@@ -19,7 +19,11 @@
 				<GridLayout columns="*, *, *, *, *, *, *, *, *" rows="*, *, *, *, *, *, *, *, *" />
 			</Repeater.itemsLayout>
 			<Repeater.itemTemplate>
-				<Button col="{{ 3*boardCol+cellCol }}" row="{{ 3*boardRow+cellRow }}" text="{{ value }}" tap="makeMove"/>
+				<Button col="{{ 3*boardCol+cellCol }}"
+						row="{{ 3*boardRow+cellRow }}"
+						text="{{ value }}"
+						tap="makeMove"
+						cssClass="{{ $parents['Repeater'].playingBoard, ($parents['Repeater'].playingBoard.boardRow === 3 && $parents['Repeater'].playingBoard.boardCol === 3) || ($parents['Repeater'].playingBoard.boardRow === boardRow && $parents['Repeater'].playingBoard.boardCol === boardCol) ? 'playingCell' : '' }}"/>
 			</Repeater.itemTemplate>
 		</Repeater>
 	</GridLayout>
