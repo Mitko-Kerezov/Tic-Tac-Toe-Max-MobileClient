@@ -5,6 +5,14 @@ import {ViewModelBase} from "../common/view-model-base";
 import {Constants} from "../../constants";
 import {authentication} from "../../config/auth";
 require('nativescript-websockets');
+let sound = require("nativescript-sound");
+let sounds = {
+	move: sound.create("~/sound/move.wav"),
+	join: sound.create("~/sound/fanfare.wav"),
+	winner: sound.create("~/sound/winner.wav"),
+	loser: sound.create("~/sound/loser.wav"),
+	draw: sound.create("~/sound/draw.wav"),
+};
 
 export class PlayViewModel extends ViewModelBase {
     private _game: IGame = null;
@@ -37,6 +45,7 @@ export class PlayViewModel extends ViewModelBase {
 					Notifications.showError(response.message);
 				} else {
 					if (response.message === Constants.Responses.MoveMade) {
+						sounds.move.play();
 						that._game.board = response.board;
 						that._board = [];
 						that._currentPlayerSymbol = ` ${response.currentPlayerSymbol}'s move`;
@@ -49,7 +58,15 @@ export class PlayViewModel extends ViewModelBase {
 							let opponentName = response.message.match(Constants.Responses.OpponentNameRegex)[1];
 							that._opponentName = opponentName;
 							that.notifyPropertyChange("opponent", that.opponent);
+							sounds.join.play();
+						} else if (endsWith(response.message, Constants.GameEndings.Winner)) {
+							sounds.winner.play();
+						} else if (endsWith(response.message, Constants.GameEndings.Loser)) {
+							sounds.loser.play();
+						} else if (endsWith(response.message, Constants.GameEndings.Draw)) {
+							sounds.draw.play();
 						}
+
 						Notifications.showInfo(response.message);
 					}
 				}
