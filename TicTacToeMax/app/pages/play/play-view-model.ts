@@ -4,6 +4,8 @@ import {Notifications} from "../../utilities/notifications";
 import {ViewModelBase} from "../common/view-model-base";
 import {Constants} from "../../constants";
 import {authentication} from "../../config/auth";
+import {Navigation} from "../../utilities/navigation";
+import {Views} from "../../utilities/views";
 require('nativescript-websockets');
 let sound = require("nativescript-sound");
 let sounds = {
@@ -60,11 +62,11 @@ export class PlayViewModel extends ViewModelBase {
 							that.notifyPropertyChange("opponent", that.opponent);
 							sounds.join.play();
 						} else if (endsWith(response.message, Constants.GameEndings.Winner)) {
-							sounds.winner.play();
+							this.navigateToHome("winner");
 						} else if (endsWith(response.message, Constants.GameEndings.Loser)) {
-							sounds.loser.play();
+							this.navigateToHome("loser");
 						} else if (endsWith(response.message, Constants.GameEndings.Draw)) {
-							sounds.draw.play();
+							this.navigateToHome("draw");
 						}
 
 						Notifications.showInfo(response.message);
@@ -164,6 +166,15 @@ export class PlayViewModel extends ViewModelBase {
 			data: cell,
 			token: authentication.token
 		}));
+	}
+
+	private navigateToHome(soundName: string) {
+		sounds[soundName].play();
+		Navigation.navigate({
+			moduleName: Views.home,
+			backstackVisible: false,
+			clearHistory: true
+		});
 	}
 }
 
