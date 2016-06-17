@@ -18,7 +18,6 @@ export class PlayViewModel extends ViewModelBase {
 
 	constructor(game: IGame, playerSymbol, opponentName?: string) {
 		super();
-
 		let that = this;
 		this._game = game;
 		this._board = [];
@@ -31,7 +30,7 @@ export class PlayViewModel extends ViewModelBase {
 		this._ws = new WebSocket(Constants.Server.WebSocketUrl);
 		this._opponentName = opponentName || "No opponent yet";
 		this._currentPlayerSymbol = ` ${this._game.currentPlayerSymbol}'s move`;
-		this._ws.addEventListener('message', function(evt: MessageEvent) {
+		this._ws.addEventListener('message', (evt: MessageEvent) => {
 			let response: IWebSocketResponse = JSON.parse(evt.data);
 			if (~response.usernames.indexOf(authentication.username)) {
 				if (response.isError) {
@@ -57,11 +56,11 @@ export class PlayViewModel extends ViewModelBase {
 			}
 		});
 
-		this._ws.addEventListener('close', function(evt: CloseEvent) {
+		this._ws.addEventListener('close', (evt: CloseEvent) => {
 			Notifications.showError(`The Socket was Closed: Code: ${evt.code} Reason: ${evt.reason}`);
 		});
 
-		this._ws.addEventListener('error', function(evt: ErrorEvent) {
+		this._ws.addEventListener('error', (evt: ErrorEvent) => {
 			Notifications.showError(`The socket had an error: ${JSON.stringify(evt.error, null, 2)}`);
 		});
 	}

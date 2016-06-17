@@ -5,7 +5,7 @@ export module Constants {
     export let UsernameKey = "username_tictactoemax";
     export module Server {
         export let Protocol = "http";
-        export let Address = "192.168.0.115:1234";
+        export let Address = "192.168.0.101:1234";
         export let BaseUrl = `${Protocol}://${Address}`;
         export let WebSocketUrl = `ws://${Address}`;
         export let LoginEndpoint = `${BaseUrl}/login`;

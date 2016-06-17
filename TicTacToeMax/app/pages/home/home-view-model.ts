@@ -16,7 +16,7 @@ export class HomeViewModel extends ViewModelBase {
         wins: "Loading",
         losses: "Loading"
     };
-    
+
     constructor() {
         super();
     }
@@ -84,7 +84,7 @@ export class HomeViewModel extends ViewModelBase {
                 Notifications.showError(error.message);
             })
     }
-    
+
     public get gameResults(): IGameResults {
         http.request({
             url: Constants.Server.StatusEndpoint,
@@ -98,11 +98,18 @@ export class HomeViewModel extends ViewModelBase {
         .then((response: http.HttpResponse) => {
             if (StatusCodes.isOK(response.statusCode)) {
                 let responseJson: IGameResults = response.content.toJSON();
-                this._gameResults = responseJson;
-                this.notifyPropertyChange("gameResults", this.gameResults);
+                this.gameResults = responseJson;
             }
         })
 
         return this._gameResults;
+    }
+
+    public set gameResults(value: IGameResults) {
+        if (this._gameResults.losses !== value.losses ||
+            this._gameResults.wins !== value.wins) {
+            this._gameResults = value;
+            this.notifyPropertyChange("gameResults", value);
+        }
     }
 }
