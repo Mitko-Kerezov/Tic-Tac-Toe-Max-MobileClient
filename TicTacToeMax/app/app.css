@@ -128,8 +128,32 @@ ActionBar {
     padding: 8 16 8 16;
 }
 
+.takenDraw {
+	color: #555;
+	background-color: #555;
+}
+
+.markedX {
+	color: #1F00BF;
+}
+
+.takenX {
+	color: #1F00BF;
+	background-color: #1F00BF;
+}
+
+.markedO {
+	color: #FF8300;
+}
+
+.takenO {
+	color: #FF8300;
+	background-color: #FF8300;
+}
+
 .whiteBtn {
-    color: #fff
+	background-color: #B8B8B8;
+	font-weight: bold;
 }
 
 .playingCell {
@@ -155,8 +179,8 @@ ActionBar {
 }
 
 .secondaryButton {
-    color: #259B24;
-    background-color: #00FFFFFF;
+    background-color: #CDDC39;
+    color: #FFFFFF;
     margin: 10;
 }
 

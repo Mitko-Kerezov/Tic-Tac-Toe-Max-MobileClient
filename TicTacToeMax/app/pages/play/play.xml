@@ -23,7 +23,7 @@
 						row="{{ 3*boardRow+cellRow }}"
 						text="{{ value }}"
 						tap="makeMove"
-						cssClass="{{ $parents['Repeater'].playingBoard, ($parents['Repeater'].playingBoard.boardRow === 3 && $parents['Repeater'].playingBoard.boardCol === 3) || ($parents['Repeater'].playingBoard.boardRow === boardRow && $parents['Repeater'].playingBoard.boardCol === boardCol) ? 'playingCell whiteBtn' : 'whiteBtn' }}"/>
+						class="{{ cssClass }}"/>
 			</Repeater.itemTemplate>
 		</Repeater>
 	</GridLayout>

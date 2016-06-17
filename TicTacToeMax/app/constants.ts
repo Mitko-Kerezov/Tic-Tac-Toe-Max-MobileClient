@@ -27,6 +27,13 @@ export module Constants {
 			export let O = "O";
 		}
 
+		export module BoardStatuses {
+			export let Draw = "Draw";
+			export let StillPlaying = "Still playing";
+			export let WonByO = "Won by O";
+			export let WonByX = "Won by X";
+		}
+
 		export let PlayAnyWhere = 3;
 	}
 

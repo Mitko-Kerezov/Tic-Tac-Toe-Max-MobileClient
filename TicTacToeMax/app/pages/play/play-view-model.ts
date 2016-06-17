@@ -110,14 +110,39 @@ export class PlayViewModel extends ViewModelBase {
 		if (!this._board || !this._board.length) {
 			Object.keys(this._game.board).forEach((boardRow: string) => {
 				Object.keys(this._game.board[boardRow]).forEach((boardCol: string) => {
-					this._game.board[boardRow][boardCol].tiles.forEach((boardValue: string[], cellRow: string) => {
+					let smallBoard: ISmallBoard = this._game.board[boardRow][boardCol];
+					smallBoard.tiles.forEach((boardValue: string[], cellRow: number) => {
 						boardValue.forEach((cellValue: string, cellCol: number) => {
+							let cssClass = '';
+							if (smallBoard.gameResult === Constants.Game.BoardStatuses.WonByO) {
+								cssClass = 'takenO';
+							} else if (smallBoard.gameResult === Constants.Game.BoardStatuses.WonByX) {
+								cssClass = 'takenX';
+							} else if (smallBoard.gameResult === Constants.Game.BoardStatuses.Draw) {
+								cssClass = 'takenDraw';
+							} else {
+								cssClass = 'whiteBtn ';
+								switch (cellValue) {
+									case Constants.Game.Symbols.O:
+										cssClass += 'markedO ';
+										break;
+									case Constants.Game.Symbols.X:
+										cssClass += 'markedX ';
+										break;
+								}
+
+								if ((this.playingBoard.boardRow === 3 && this.playingBoard.boardCol === 3) || (this.playingBoard.boardRow === +boardRow && this.playingBoard.boardCol === +boardCol)) {
+									cssClass += 'playingCell ';
+								}
+							}
+
 							this._board.push({
 								boardRow: +boardRow,
 								boardCol: +boardCol,
-								cellRow: +cellRow,
-								cellCol: +cellCol,
-								value: cellValue
+								cellRow: cellRow,
+								cellCol: cellCol,
+								value: cellValue,
+								cssClass
 							})
 						})
 					})

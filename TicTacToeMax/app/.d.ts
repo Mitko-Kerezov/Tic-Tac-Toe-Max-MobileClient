@@ -39,6 +39,7 @@ interface IGameCell extends IGameReference, IBoardCoordinates  {
 	cellRow: number;
 	cellCol: number;
 	value: string;
+	cssClass?: string;
 }
 
 interface IWebSocketResponse {
