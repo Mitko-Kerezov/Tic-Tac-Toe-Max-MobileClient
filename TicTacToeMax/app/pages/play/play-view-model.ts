@@ -39,7 +39,7 @@ export class PlayViewModel extends ViewModelBase {
 		this._opponentSymbol = playerSymbol === Constants.Game.Symbols.X ? Constants.Game.Symbols.O : Constants.Game.Symbols.X;
 		this._ws = new WebSocket(Constants.Server.WebSocketUrl);
 		this._opponentName = opponentName || "No opponent yet";
-		this._currentPlayerSymbol = ` ${this._game.currentPlayerSymbol}'s move`;
+		this._currentPlayerSymbol = this._game.currentPlayerSymbol;
 		this._ws.addEventListener('message', (evt: MessageEvent) => {
 			let response: IWebSocketResponse = JSON.parse(evt.data);
 			if (~response.usernames.indexOf(authentication.username)) {
@@ -50,7 +50,7 @@ export class PlayViewModel extends ViewModelBase {
 						sounds.move.play();
 						that._game.board = response.board;
 						that._board = [];
-						that._currentPlayerSymbol = ` ${response.currentPlayerSymbol}'s move`;
+						that._currentPlayerSymbol = response.currentPlayerSymbol;
 						that._playingBoard = response.nextBoard;
 						that.notifyPropertyChange("board", that.board);
 						that.notifyPropertyChange("currentPlayerSymbol", that.currentPlayerSymbol);
