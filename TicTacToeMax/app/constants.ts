@@ -9,6 +9,7 @@ export module Constants {
 		export let BaseUrl = `${Protocol}://${Address}`;
 		export let WebSocketUrl = `ws://${Address}`;
 		export let LoginEndpoint = `${BaseUrl}/login`;
+		export let FbLoginEndpoint = `${BaseUrl}/fblogin`;
 		export let RegisterEndpoint = `${BaseUrl}/register`;
 		export let CreateGameEndpoint = `${BaseUrl}/create`;
 		export let JoinGameEndpoint = `${BaseUrl}/join`;

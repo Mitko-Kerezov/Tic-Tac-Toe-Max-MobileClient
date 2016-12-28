@@ -14,6 +14,7 @@
 
 				<Button text="{{ strings.login }}" tap="loginButtonTap" cssClass="primaryButton"/>
 				<Button text="{{ strings.signUp }}" tap="signUpButtonTap" cssClass="secondaryButton"/>
+				<Button text="{{ strings.fbLogin }}" tap="fbLoginButtonTap" cssClass="fbButton"/>
 			</StackLayout>
 		</ScrollView>
 

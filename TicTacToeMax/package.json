@@ -2,21 +2,22 @@
 	"nativescript": {
 		"id": "org.kerezov.tictactoemax",
 		"tns-android": {
-			"version": "2.0.0"
+			"version": "1.5.0"
 		},
 		"tns-ios": {
 			"version": "1.5.2"
 		}
 	},
 	"dependencies": {
+		"nativescript-facebook-login": "^0.2.0",
 		"nativescript-sound": "^1.0.4",
 		"nativescript-websockets": "^1.1.0",
-		"tns-core-modules": "2.0.1"
+		"tns-core-modules": "1.5.2"
 	},
 	"devDependencies": {
-		"babel-traverse": "6.10.4",
-		"babel-types": "6.10.2",
-		"babylon": "6.8.2",
+		"babel-traverse": "6.21.0",
+		"babel-types": "6.21.0",
+		"babylon": "6.14.1",
 		"filewalker": "0.1.3",
 		"lazy": "1.0.11",
 		"nativescript-dev-typescript": "^0.3.0",

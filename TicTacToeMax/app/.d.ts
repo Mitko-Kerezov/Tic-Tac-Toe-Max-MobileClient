@@ -22,7 +22,7 @@ interface IBoard {
 }
 
 interface IGame {
-	_id: string;
+    _id: string;
     board: IBoard;
     gameResult: string;
     currentPlayingBoardRow: number;

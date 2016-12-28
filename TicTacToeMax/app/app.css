@@ -172,6 +172,12 @@ ActionBar {
     margin: 0;
 }
 
+.fbButton {
+    background-color: #4862A3;
+    color: #FFF;
+    margin: 10;
+}
+
 .primaryButton {
     background-color: #259B24;
     color: #FFFFFF;

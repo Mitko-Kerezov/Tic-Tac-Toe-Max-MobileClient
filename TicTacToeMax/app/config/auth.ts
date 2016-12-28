@@ -60,6 +60,31 @@ class Authentication {
         });
     }
 
+    public loginWithFb(fbApiToken: string): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            http.request({
+                url: Constants.Server.FbLoginEndpoint,
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                content: JSON.stringify({
+                    token: fbApiToken,
+                }),
+                timeout: 2000 /* miliseconds */
+            })
+            .then((response: http.HttpResponse) => {
+                if (StatusCodes.isOK(response.statusCode)) {
+                    let responseJson = response.content.toJSON();
+                    this.setupLocalSettings(responseJson.token, responseJson.username);
+                    resolve(response.content);
+                } else {
+                    Authentication.showErrorAndReject(response.content.toString(), reject);
+                }
+            }, (error: any) => {
+                Authentication.showErrorAndReject(error.message, reject);
+            })
+        });
+    }
+
     public logout(): void {
         this.clearLocalSettings();
     }
@@ -95,13 +120,13 @@ class Authentication {
     }
 
     private setupLocalSettings(authenticationTokenKey: string, username: string): void {
-		this._username = username;
+        this._username = username;
         applicationSettingsModule.setString(Constants.AuthenticationTokenKey, authenticationTokenKey);
         applicationSettingsModule.setString(Constants.UsernameKey, username);
     }
 
     private clearLocalSettings(): void {
-		this._username = null;
+        this._username = null;
         applicationSettingsModule.remove(Constants.AuthenticationTokenKey);
         applicationSettingsModule.remove(Constants.UsernameKey);
     }

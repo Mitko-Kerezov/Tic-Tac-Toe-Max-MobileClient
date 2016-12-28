@@ -1,10 +1,11 @@
 /// <reference path="../../.d.ts" />
 
-import {authentication} from "../../config/auth";
-import {Navigation} from "../../utilities/navigation";
-import {Notifications} from "../../utilities/notifications";
-import {Views} from "../../utilities/views";
-import {ViewModelBase} from "../common/view-model-base";
+import { authentication } from "../../config/auth";
+import { Navigation } from "../../utilities/navigation";
+import { Notifications } from "../../utilities/notifications";
+import { Views } from "../../utilities/views";
+import { ViewModelBase } from "../common/view-model-base";
+let FacebookLoginHandler = require("nativescript-facebook-login");
 
 export class LoginViewModel extends ViewModelBase {
     private _username: string;
@@ -46,19 +47,25 @@ export class LoginViewModel extends ViewModelBase {
             }
 
             authentication
-            .login(this.username, this.password)
-            .then((data: any) => {
-                Navigation.navigate({
-                    moduleName: Views.home
+                .login(this.username, this.password)
+                .then((data: any) => {
+                    Navigation.navigate({
+                        moduleName: Views.home
+                    });
+                    this.endLoading();
+                }, (error: any) => {
+                    this.clearPassword();
+                    this.endLoading();
                 });
-                this.endLoading();
-            }, (error: any) => {
-                this.clearPassword();
-                this.endLoading();
-            });
         } else {
             this.clearPassword();
         }
+    }
+
+    public loginWithFb(): void {
+        FacebookLoginHandler.init();
+        FacebookLoginHandler.registerCallback(this.successCallback, this.cancelCallback, this.failCallback);
+        FacebookLoginHandler.logInWithReadPermissions(["public_profile"]);
     }
 
     public signUp(): void {
@@ -84,5 +91,36 @@ export class LoginViewModel extends ViewModelBase {
         }
 
         return true;
+    }
+
+    private successCallback(result) {
+        let token = result.getAccessToken().getToken();
+        authentication.loginWithFb(token)
+            .then((data: any) => {
+                Navigation.navigate({
+                    moduleName: Views.home
+                });
+            });
+    }
+
+    private cancelCallback() {
+        Notifications.showError("Login was cancelled");
+    }
+
+    private failCallback(error) {
+        let errorMessage = "Error with Facebook";
+        if (error) {
+            if (error.getErrorMessage) {
+                errorMessage += ": " + error.getErrorMessage();
+            }
+            else if (error.getErrorCode) {
+                errorMessage += ": Code " + error.getErrorCode();
+            }
+            else {
+                errorMessage += ": " + error;
+            }
+        }
+
+        Notifications.showError(errorMessage);
     }
 }
