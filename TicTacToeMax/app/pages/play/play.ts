@@ -14,6 +14,6 @@ export function navigatingTo(args: EventData) {
 }
 
 export function makeMove(args: any) {
-	let cell: IGameCell = args.object._propertyEntries["45"]._effectiveValue;
+	let cell: IGameCell = args.object._propertyEntries["46"].effectiveValue;
 	viewModel.makeMove(cell);
 }

@@ -12,5 +12,6 @@ export function navigatingTo(args: EventData) {
 }
 
 export function joinButtonTap(args : any): void {
-    viewModel.joinGame(args.object._propertyEntries["45"]._effectiveValue);
+    console.log(JSON.stringify(args.object._propertyEntries));
+    viewModel.joinGame(args.object._propertyEntries["46"].effectiveValue);
 }
