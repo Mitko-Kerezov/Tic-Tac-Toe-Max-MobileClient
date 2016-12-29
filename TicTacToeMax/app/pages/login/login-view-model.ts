@@ -1,5 +1,6 @@
 /// <reference path="../../.d.ts" />
 
+import { ios } from "application";
 import { authentication } from "../../config/auth";
 import { Navigation } from "../../utilities/navigation";
 import { Notifications } from "../../utilities/notifications";
@@ -63,7 +64,12 @@ export class LoginViewModel extends ViewModelBase {
     }
 
     public loginWithFb(): void {
-        FacebookLoginHandler.init();
+        if (ios) {
+            FacebookLoginHandler.init(2);
+        } else {
+            FacebookLoginHandler.init();
+        }
+
         FacebookLoginHandler.registerCallback(this.successCallback, this.cancelCallback, this.failCallback);
         FacebookLoginHandler.logInWithReadPermissions(["public_profile"]);
     }
@@ -94,7 +100,7 @@ export class LoginViewModel extends ViewModelBase {
     }
 
     private successCallback(result) {
-        let token = result.getAccessToken().getToken();
+        let token = ios ? result.token.tokenString : result.getAccessToken().getToken();
         authentication.loginWithFb(token)
             .then((data: any) => {
                 Navigation.navigate({
