@@ -65,8 +65,10 @@ export class LoginViewModel extends ViewModelBase {
 
     public loginWithFb(): void {
         if (ios) {
+            console.log("ios")
             FacebookLoginHandler.init(2);
         } else {
+            console.log("android")
             FacebookLoginHandler.init();
         }
 

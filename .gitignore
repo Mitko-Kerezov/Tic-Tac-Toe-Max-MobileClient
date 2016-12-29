@@ -28,6 +28,7 @@ node_modules
 
 # NativeScript
 TicTacToeMax/platforms
+TicTacToeMax/lib/iOS
 
 # TypeScript unnecessary files
 .tscache

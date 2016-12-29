@@ -5,6 +5,7 @@ import { Views } from "./utilities/views";
 import { authentication } from "./config/auth";
 
 if (application.ios) {
+    console.log("HERE?")
     class MyDelegate extends UIResponder implements UIApplicationDelegate {
         public static ObjCProtocols = [UIApplicationDelegate];
 
